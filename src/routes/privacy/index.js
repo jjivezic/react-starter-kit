@@ -9,16 +9,14 @@
 
 import React from 'react';
 import Layout from '../../components/Layout';
-import Page from '../../components/Page';
-import privacy from './privacy.md';
+import Privacy from '../../components/Privacy';
 
 function action() {
   return {
-    chunks: ['privacy'],
-    title: privacy.title,
+    chunks: ['privacy-policy'],
     component: (
       <Layout>
-        <Page {...privacy} />
+        <Privacy />
       </Layout>
     ),
   };

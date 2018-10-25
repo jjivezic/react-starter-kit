@@ -9,7 +9,7 @@
 
 import React from 'react';
 import Layout from '../../components/Layout';
-import Contact from './Contact';
+import Contact from '../../components/Contact';
 
 const title = 'Contact Us';
 
@@ -19,7 +19,7 @@ function action() {
     title,
     component: (
       <Layout>
-        <Contact title={title} />
+        <Contact />
       </Layout>
     ),
   };

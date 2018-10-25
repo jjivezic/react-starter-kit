@@ -66,7 +66,10 @@ class Html extends React.Component {
             rel="stylesheet"
             href="https://unpkg.com/react-tabs@2/style/react-tabs.css"
           />
+          <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
+          <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
           <link rel="stylesheet" href="/style.css" />
+          <link rel="stylesheet" href="/blog.css" />
         </head>
         <body>
           <div id="app" dangerouslySetInnerHTML={{ __html: children }} />
@@ -80,7 +83,7 @@ class Html extends React.Component {
                 __html:
                   'window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;' +
                   `ga('create','${
-                    config.analytics.googleTrackingId
+                  config.analytics.googleTrackingId
                   }','auto');ga('send','pageview')`,
               }}
             />

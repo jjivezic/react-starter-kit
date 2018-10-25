@@ -1,0 +1,17 @@
+.privacyPolicy{
+    padding-top: 150px
+    }
+    /* .privacy-policy ul{
+        list-style: none;
+    } */
+    .privacyPolicy ul li {
+        background: #efefef;
+        padding: 3px;
+        margin-bottom: 3px;
+    }
+    .privacyPolicy p{
+        color: #696767;
+    }
+    .Privacy h5{
+      margin-bottom: 0
+    }

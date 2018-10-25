@@ -103,9 +103,9 @@ class Header extends React.Component {
                   Portfolio{' '}
                 </Link>
               </li>
-              {/* <li className="nav-item">
+              <li className="nav-item">
                       <Link className="nav-link nav-link--rounded" activeClassName='activeLink' to="/team">Team </Link>
-                  </li> */}
+                  </li>
               <li className="nav-item">
                 <Link
                   className="nav-link nav-link--rounded"
@@ -115,9 +115,9 @@ class Header extends React.Component {
                   Contact us{' '}
                 </Link>
               </li>
-              {/* <li className="nav-item">
+              <li className="nav-item">
                        <Link className="nav-link nav-link--rounded" activeClassName='activeLink' to="/blog">Blog </Link>
-                  </li> */}
+                  </li>
             </ul>
           </div>
         </div>
