@@ -8,32 +8,117 @@
  */
 
 import React from 'react';
-import withStyles from 'isomorphic-style-loader/lib/withStyles';
-import s from './Header.css';
+import history from '../../history';
 import Link from '../Link';
-import Navigation from '../Navigation';
-import logoUrl from './logo-small.png';
-import logoUrl2x from './logo-small@2x.png';
+import logo from './logo.png';
 
 class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      navbarClass:
+        'navbar navbar-dark navbar-expand-lg navbar-dark-custom-other',
+    };
+    this.handleScroll = this.handleScroll.bind(this);
+  }
+
+  componentDidMount() {
+    if (history.location.pathname === '/') {
+      this.setState({
+        navbarClass:
+          'navbar navbar-dark navbar-expand-lg navbar-dark-custom-other transparent',
+      });
+      window.addEventListener('scroll', this.handleScroll);
+    }
+  }
+  componentWillReceiveProps(props) {
+    if (history.location.pathname === '/') {
+      window.addEventListener('scroll', this.handleScroll);
+      this.setState({
+        navbarClass:
+          'navbar navbar-dark navbar-expand-lg navbar-dark-custom-other transparent',
+      });
+    } else {
+      window.removeEventListener('scroll', this.handleScroll);
+      this.setState({
+        navbarClass:
+          'navbar navbar-dark navbar-expand-lg navbar-dark-custom-other',
+      });
+    }
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll(event) {
+    if (window.scrollY > 585) {
+      this.setState({
+        navbarClass:
+          'navbar navbar-dark navbar-expand-lg navbar-dark-custom-other',
+      });
+    } else {
+      this.setState({
+        navbarClass:
+          'navbar navbar-dark navbar-expand-lg navbar-dark-custom-other transparent',
+      });
+    }
+  }
   render() {
     return (
-      <div className={s.root}>
-        <div className={s.container}>
-          <Navigation />
-          <Link className={s.brand} to="/">
-            <img
-              src={logoUrl}
-              srcSet={`${logoUrl2x} 2x`}
-              width="38"
-              height="38"
-              alt="React"
-            />
-            <span className={s.brandTxt}>Your Company</span>
+      <div className={this.state.navbarClass}>
+        <div className="container">
+          <Link className="navbar-brand" to="/">
+            <img src={logo} alt="logo" className="mr-2 img-fluid" />
+            Hyperether
           </Link>
-          <div className={s.banner}>
-            <h1 className={s.bannerTitle}>React</h1>
-            <p className={s.bannerDesc}>Complex web apps made easy</p>
+          <button
+            className="navbar-toggler"
+            data-toggle="collapse"
+            data-target="#navbar-collapse"
+          >
+            <span className="navbar-toggler-icon" />
+          </button>
+
+          <div
+            className="collapse navbar-collapse justify-content-end"
+            id="navbar-collapse"
+          >
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <Link
+                  className="nav-link nav-link--rounded"
+                  activeClassName="activeLink"
+                  to="/"
+                  exact
+                >
+                  Home{' '}
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  className="nav-link nav-link--rounded"
+                  activeClassName="activeLink"
+                  to="/portfolio"
+                >
+                  Portfolio{' '}
+                </Link>
+              </li>
+              {/* <li className="nav-item">
+                      <Link className="nav-link nav-link--rounded" activeClassName='activeLink' to="/team">Team </Link>
+                  </li> */}
+              <li className="nav-item">
+                <Link
+                  className="nav-link nav-link--rounded"
+                  activeClassName="activeLink"
+                  to="/contact"
+                >
+                  Contact us{' '}
+                </Link>
+              </li>
+              {/* <li className="nav-item">
+                       <Link className="nav-link nav-link--rounded" activeClassName='activeLink' to="/blog">Blog </Link>
+                  </li> */}
+            </ul>
           </div>
         </div>
       </div>
@@ -41,4 +126,4 @@ class Header extends React.Component {
   }
 }
 
-export default withStyles(s)(Header);
+export default Header;
