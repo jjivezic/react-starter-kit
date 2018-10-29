@@ -24,6 +24,7 @@ class Link extends React.Component {
     to: PropTypes.string.isRequired,
     children: PropTypes.node.isRequired,
     onClick: PropTypes.func,
+    id:PropTypes.number
   };
 
   static defaultProps = {
@@ -44,11 +45,12 @@ class Link extends React.Component {
     }
 
     event.preventDefault();
-    history.push(this.props.to);
+
+    history.push(this.props.to,{id:this.props.id});
   };
 
   render() {
-    const { to, children, ...props } = this.props;
+    const { to, children,...props } = this.props;
     return (
       <a href={to} {...props} onClick={this.handleClick}>
         {children}

@@ -10,6 +10,7 @@
 import React from 'react';
 import history from '../../history';
 import Link from '../Link';
+import $ from 'jquery';
 import devices1 from './description.png';
 import devices2 from './index-device.png';
 import devices3 from './devices3.png';
@@ -26,6 +27,110 @@ import mongo2 from './techs/mongo2.png';
 import sql1 from './techs/sql1.png';
 
 class Lending extends React.Component {
+  componentDidMount() {
+    this.init();
+}
+
+init() {
+    var $navDots = $("#slider nav a")
+    var $next = $(".slide-nav.next");
+    var $prev = $(".slide-nav.prev");
+    var $slides = $("#slider .slides .slide");
+    var actualIndex = 0;
+    var swiping = false;
+    var interval;
+
+    $navDots.click(function (e) {
+        e.preventDefault();
+        if (swiping) { return; }
+        swiping = true;
+
+        actualIndex = $navDots.index(this);
+        updateSlides(actualIndex);
+    });
+
+    $next.click(function (e) {
+        e.preventDefault();
+        if (swiping) { return; }
+        swiping = true;
+
+        clearInterval(interval);
+        interval = null;
+
+        actualIndex++;
+        if (actualIndex >= $slides.length) {
+            actualIndex = 0;
+        }
+
+        updateSlides(actualIndex);
+    });
+
+    $prev.click(function (e) {
+        e.preventDefault();
+        if (swiping) { return; }
+        swiping = true;
+
+        clearInterval(interval);
+        interval = null;
+
+        actualIndex--;
+        if (actualIndex < 0) {
+            actualIndex = $slides.length - 1;
+        }
+
+        updateSlides(actualIndex);
+    });
+
+    function updateSlides(index) {
+        // update nav dots
+        $navDots.removeClass("active");
+        $navDots.eq(index).addClass("active");
+
+        // update slides
+        var $activeSlide = $("#slider .slide.active");
+        var $nextSlide = $slides.eq(index);
+
+        $activeSlide.fadeOut();
+        $nextSlide.addClass("next").fadeIn();
+
+        setTimeout(function () {
+            $slides.removeClass("next").removeClass("active");
+            $nextSlide.addClass("active");
+            $activeSlide.removeAttr('style');
+            swiping = false;
+        }, 1000);
+    }
+
+    interval = setInterval(function () {
+        if (swiping) { return; }
+        swiping = true;
+
+        actualIndex++;
+        if (actualIndex >= $slides.length) {
+            actualIndex = 0;
+        }
+
+        updateSlides(actualIndex);
+    }, 5000);
+
+    // demo player
+    // var $videoModal = $(".video-modal");
+    // $("#demo-player").click(function () {
+    //     $videoModal.toggleClass("active");
+    //     clearInterval(interval);
+    //     interval = null;
+    // });
+    // $videoModal.click(function () {
+    //     $videoModal.removeClass("active");
+    //     setTimeout(function () {
+    //         $videoModal.find(".wrap").html('<iframe src="https://player.vimeo.com/video/22439234" width="620" height="350" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>');
+    //     }, 1000);
+    // })
+    // $videoModal.find(".wrap").click(function (e) {
+    //     e.stopPropagation();
+    // });
+}
+
   render() {
     return (
       <div className="main-section">

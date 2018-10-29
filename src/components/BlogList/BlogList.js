@@ -1,14 +1,15 @@
 import React from 'react'
-//import Pagination from "react-js-pagination";
-//import Loader from 'react-loader-spinner';
-import Link from '../Link';
-var apiUrl ="http://localhost:3000/";
+import Pagination from "react-js-pagination";
+import axios from 'axios';
+import Link from '../Link/Link';
+var Loader = require('react-loader');
+var apiUrl = "http://localhost:3000/";
 
 function bufferToBase64(buf) {
   return buf;
 }
 
-export default class Blogs extends React.Component {
+class BlogList extends React.Component {
 
   constructor(props) {
     super(props);
@@ -17,7 +18,21 @@ export default class Blogs extends React.Component {
       page: {},
       posts: [],
       activePage: 1,
-      isLoading: true
+      isLoading: true,
+      options: {
+        lines: 13,
+        length: 15,
+        width: 2,
+        radius: 10,
+        scale: 1.00,
+        color: '#96d05c',
+        opacity: 0.35,
+        rotate: 0,
+        direction: 1,
+        speed: 1,
+        shadow: false,
+        hwaccel: false,
+      }
     }
 
     this.renderPost = this.renderPost.bind(this);
@@ -35,10 +50,11 @@ export default class Blogs extends React.Component {
   }
 
   loadData(page) {
-    fetch(`${apiUrl}api/blogs/${page}`)
-      .then(response => response.json())
-      .then(page => {
-        this.setState({ page: page, isLoading: false });
+    axios.get(`${apiUrl}api/blogs/${page}`)
+      .then((response) => {
+        this.setState({ page: response.data, isLoading: false });
+      })
+      .catch((error) => {
       });
   }
 
@@ -46,19 +62,19 @@ export default class Blogs extends React.Component {
     const imgBase64 = bufferToBase64(post.cover);
     return (
       <div className="post pt-5 text-left" key={post.id}>
-        <Link to={`/blogPost/${post.id}`}>
+        <Link to={`/blog/${post.id}`} id={post.id}>
           {imgBase64 ? <img src={`data:image/png;base64, ${imgBase64}`} className="img-fluid" alt="blogpost" /> : null}
 
         </Link>
         <div className="title">
-          <Link to={`/blogPost/${post.id}`}>{post.title}</Link>
+          <Link to={`/blog/${post.id}`} id={post.id}>{post.title}</Link>
         </div>
         <div className="author">
           {/* <img src={sp} className="avatar" alt="author" /> */}
 
           Slobodan Prijic, {post.createdAt.substring(0, 10)}
         </div>
-        <Link to={`/blogPost/${post.id}`}>Continue reading this post</Link>
+        <Link to={`/blog/${post.id}`}>Continue reading this post</Link>
       </div>
     );
   }
@@ -68,14 +84,9 @@ export default class Blogs extends React.Component {
     return (
       <div className="main-section">
         {this.state.isLoading ?
-          <div className="loader">
-           <p>Loading, please wait ...</p>
-            {/* <Loader
-              type="Oval"
-              color="#6eb31e"
-              height="60"
-              width="60"
-            /> */}
+          <div className="loader-box">
+            <p>Loading, please wait ...</p>
+            <Loader className="loader-icon" loaded={false} options={this.state.options} />
           </div>
           :
           <div className="blog-posts">
@@ -85,7 +96,7 @@ export default class Blogs extends React.Component {
                   return this.renderPost(post);
                 }) : null}
 
-                {/* {posts && posts.length > 8 ?
+                {posts && posts.length > 8 ?
                   <div className="pages">
                     <Pagination
                       activePage={this.state.activePage}
@@ -95,7 +106,7 @@ export default class Blogs extends React.Component {
                       onChange={this.handlePageChange}
                     />
                   </div> : null
-                } */}
+                }
               </div>
             </div>
           </div>}
@@ -103,3 +114,5 @@ export default class Blogs extends React.Component {
     )
   }
 }
+
+export default BlogList;

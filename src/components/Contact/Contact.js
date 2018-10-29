@@ -8,9 +8,13 @@
  */
 
 import React from 'react';
-
+import axios from 'axios';
 import Link from '../Link';
-var apiBaseUrl = "http://hyperether.com/";
+//import Loader from 'react-loader-spinner';
+import GoogleApiWrapper from './mapContainer';
+var Loader = require('react-loader');
+
+var apiBaseUrl = 'http://localhost:3000/';
 
 class Contact extends React.Component {
     constructor(props) {
@@ -22,8 +26,23 @@ class Contact extends React.Component {
             message: '',
             submitted: false,
             errorMsg: true,
-            isLoading: false
+            isLoading: false,
+            options: {
+                lines: 13,
+                length: 15,
+                width: 2,
+                radius: 10,
+                scale: 1.00,
+                color: '#96d05c',
+                opacity: 0.35,
+                rotate: 0,
+                direction: 1,
+                speed: 1,
+                shadow: false,
+                hwaccel: false,
+            }
         }
+
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.resetForm = this.resetForm.bind(this);
@@ -60,6 +79,7 @@ class Contact extends React.Component {
     validateForm() {
         return this.state.name.length > 3 && this.state.phone.length > 3 && this.state.email.length > 3 && this.state.message.length > 3;
     }
+
     render() {
         var requredStyle = {
             position: 'relative',
@@ -111,13 +131,15 @@ class Contact extends React.Component {
                                 {this.state.isLoading ?
                                     <div className="loader-mini">
                                         <p>Sending ...</p>
-                                        <Loader
+                                        {/* <Loader
                                             type="Oval"
                                             color="#6eb31e"
                                             height="50"
                                             width="50"
-                                        />
+                                        /> */}
+                                        <Loader className="loader" loaded={false} options={this.state.options} />
                                     </div> : null}
+
                                 {this.state.submitted === true ?
                                     <div className="">
                                         <br />

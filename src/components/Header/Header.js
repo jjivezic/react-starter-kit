@@ -87,9 +87,7 @@ class Header extends React.Component {
               <li className="nav-item">
                 <Link
                   className="nav-link nav-link--rounded"
-                  activeClassName="activeLink"
                   to="/"
-                  exact
                 >
                   Home{' '}
                 </Link>
@@ -97,26 +95,24 @@ class Header extends React.Component {
               <li className="nav-item">
                 <Link
                   className="nav-link nav-link--rounded"
-                  activeClassName="activeLink"
                   to="/portfolio"
                 >
                   Portfolio{' '}
                 </Link>
               </li>
               <li className="nav-item">
-                      <Link className="nav-link nav-link--rounded" activeClassName='activeLink' to="/team">Team </Link>
+                      <Link className="nav-link nav-link--rounded"  to="/team">Team </Link>
                   </li>
               <li className="nav-item">
                 <Link
                   className="nav-link nav-link--rounded"
-                  activeClassName="activeLink"
                   to="/contact"
                 >
                   Contact us{' '}
                 </Link>
               </li>
               <li className="nav-item">
-                       <Link className="nav-link nav-link--rounded" activeClassName='activeLink' to="/blog">Blog </Link>
+                       <Link className="nav-link nav-link--rounded"  to="/blog">Blog </Link>
                   </li>
             </ul>
           </div>

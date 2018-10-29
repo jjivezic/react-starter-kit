@@ -28,6 +28,20 @@ const routes = {
       load: () => import(/* webpackChunkName: 'contact' */ './contact'),
     },
     {
+      path: '/blog',
+      children: [
+        {
+          path: '',
+          load: () => import(/* webpackChunkName: 'blog' */ './blog'),
+        },
+        {
+          path: '/:id',  
+          load: () => import(/* webpackChunkName: 'blogSingle' */ './blogSingle'),
+        },
+      ]
+    },
+
+    {
       path: '/privacy-policy',
       load: () => import(/* webpackChunkName: 'privacy-policy' */ './privacy'),
     },

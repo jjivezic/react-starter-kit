@@ -25,6 +25,7 @@ const routes = [
   '/',
   '/contact',
   '/team',
+  '/blog',
   '/register',
   '/portfolio',
   '/privacy-policy',

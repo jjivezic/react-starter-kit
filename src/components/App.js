@@ -9,6 +9,10 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+//import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+// import '../../node_modules/bootstrap/dist/js/bootstrap.min.js';
+// import '../../node_modules/jquery/dist/jquery.min.js';
+
 
 const ContextType = {
   // Enables critical path CSS rendering

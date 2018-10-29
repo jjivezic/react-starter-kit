@@ -41,8 +41,8 @@ class Html extends React.Component {
         <head>
           <meta charSet="utf-8" />
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
-          <title>{title}</title>
-          <meta name="description" content={description} />
+          <title>HyperEther - Web and mobile development company </title>
+          <meta name="description" content="We offer complete solutions for Mobile and Web development, from idea to launch." />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           {scripts.map(script => (
             <link key={script} rel="preload" href={script} as="script" />
@@ -56,6 +56,7 @@ class Html extends React.Component {
               dangerouslySetInnerHTML={{ __html: style.cssText }}
             />
           ))}
+
           <link
             rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -109,7 +110,7 @@ class Html extends React.Component {
             src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
             integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
             crossOrigin="anonymous"
-          />{' '}
+          />
         </body>
       </html>
     );

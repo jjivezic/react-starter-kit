@@ -31,6 +31,8 @@ import schema from './data/schema';
 // import assets from './asset-manifest.json'; // eslint-disable-line import/no-unresolved
 import chunks from './chunk-manifest.json'; // eslint-disable-line import/no-unresolved
 import config from './config';
+import emailManager  from './emailManager';
+import Request  from 'request';
 
 process.on('unhandledRejection', (reason, p) => {
   console.error('Unhandled Rejection at:', p, 'reason:', reason);
@@ -105,6 +107,44 @@ app.get(
   },
 );
 
+//HyperEther rout
+app.post('/email', function (req, res) {
+  var body = req.body;
+  emailManager.sendContactMail(body.name, body.email,body.phone, body.message)
+    .then(function (info) {
+      res.send(info);
+    }).fail(function (err) {
+      next(err);
+    });
+})
+
+app.get('/api/blogs/:page', function(req, res, next){
+  var page = 1;
+  try {
+    page = Number(req.params.page);
+  } catch(e){
+    page = 1;
+  }
+  Request['get']({
+    uri: 'http://blog.hyperether.com/api/blogs/'+page,
+    headers: {'secure' : 'sadfsef2424SFSFHS2424SDFSDFDS'},
+    json: true
+  }, function (error, response, body) {
+    if (error) return next(error);
+    res.json(body);
+  });
+})
+
+app.get('/api/blog/:id', function(req, res, next){
+  Request['get']({
+    uri: 'http://blog.hyperether.com/api/blog/'+req.params.id,
+    json: true
+  }, function (error, response, body) {
+    if (error) return next(error);
+    res.json(body);
+  });
+})
+//HyperEther routs ends
 //
 // Register API middleware
 // -----------------------------------------------------------------------------
@@ -122,6 +162,7 @@ app.use(
 // Register server-side rendering middleware
 // -----------------------------------------------------------------------------
 app.get('*', async (req, res, next) => {
+
   try {
     const css = new Set();
 
@@ -151,7 +192,6 @@ app.get('*', async (req, res, next) => {
     };
 
     const route = await router.resolve(context);
-
     if (route.redirect) {
       res.redirect(route.status || 302, route.redirect);
       return;
@@ -179,7 +219,6 @@ app.get('*', async (req, res, next) => {
     data.app = {
       apiUrl: config.api.clientUrl,
     };
-
     const html = ReactDOM.renderToStaticMarkup(<Html {...data} />);
     res.status(route.status || 200);
     res.send(`<!doctype html>${html}`);

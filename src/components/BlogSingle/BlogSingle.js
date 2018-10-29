@@ -1,40 +1,58 @@
 import React, { Component } from 'react'
-import Loader from 'react-loader-spinner';
-import './blogPost.css';
+import axios from 'axios';
 import sp from './sp.png';
+import history from '../../history'
+var Loader = require('react-loader');
 //var apiUrl ='http://hyperether.com/';
-var apiUrl ="http://localhost:3000/";
-export default class BlogPost extends Component {
+var apiUrl = "http://localhost:3000/";
+
+
+export default class BlogSingle extends Component {
   constructor(props) {
     super(props);
     this.state = {
       post: {},
       date: "",
-      isLoading: true
+      isLoading: true,
+      id: history.location.state.id,
+      options: {
+        lines: 13,
+        length: 15,
+        width: 2,
+        radius: 10,
+        scale: 1.00,
+        color: '#96d05c',
+        opacity: 0.35,
+        rotate: 0,
+        direction: 1,
+        speed: 1,
+        shadow: false,
+        hwaccel: false,
+      }
     }
   }
 
   componentWillMount() {
-    fetch(`${apiUrl}api/blog/${this.props.match.params.id}`)
-      .then(response => response.json())
-      .then(post => {
-        this.setState({ post: post, date: post.createdAt, isLoading: false })
+
+    console.log('History', history.location.state.id);
+
+    axios.get(`${apiUrl}api/blog/${this.state.id}`)
+      .then((response) => {
+        this.setState({ post: response.data, date: response.data.createdAt, isLoading: false })
       })
+      .catch((error) => {
+      });
   }
+
   render() {
     let date = this.state.date;
     return (
 
       <div className="main-section">
         {this.state.isLoading ?
-          <div className="loader">
+          <div className="loader-box">
             <p>Loading, please wait ...</p>
-            <Loader
-              type="Oval"
-              color="#6eb31e"
-              height="60"
-              width="60"
-            />
+            <Loader className="loader-icon" loaded={false} options={this.state.options} />
           </div>
           :
           <div className="post-wrapper">
