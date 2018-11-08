@@ -14,6 +14,7 @@ if (process.env.BROWSER) {
     'Do not import `config.js` from inside the client-side code.',
   );
 }
+console.log('process.env>>>>>>', process.env.API_CLIENT_URL);
 
 module.exports = {
   // Node.js app
@@ -31,7 +32,6 @@ module.exports = {
       process.env.API_SERVER_URL ||
       `http://localhost:${process.env.PORT || 3000}`,
   },
-
   // Database
   databaseUrl: process.env.DATABASE_URL || 'sqlite:database.sqlite',
 

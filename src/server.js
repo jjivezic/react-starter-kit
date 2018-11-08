@@ -31,8 +31,8 @@ import schema from './data/schema';
 // import assets from './asset-manifest.json'; // eslint-disable-line import/no-unresolved
 import chunks from './chunk-manifest.json'; // eslint-disable-line import/no-unresolved
 import config from './config';
-import emailManager  from './emailManager';
-import Request  from 'request';
+import emailManager from './emailManager';
+import Request from 'request';
 
 process.on('unhandledRejection', (reason, p) => {
   console.error('Unhandled Rejection at:', p, 'reason:', reason);
@@ -107,44 +107,52 @@ app.get(
   },
 );
 
-//HyperEther rout
-app.post('/email', function (req, res) {
-  var body = req.body;
-  emailManager.sendContactMail(body.name, body.email,body.phone, body.message)
-    .then(function (info) {
+// HyperEther rout
+app.post('/email', (req, res) => {
+  const body = req.body;
+  emailManager
+    .sendContactMail(body.name, body.email, body.phone, body.message)
+    .then(info => {
       res.send(info);
-    }).fail(function (err) {
+    })
+    .fail(err => {
       next(err);
     });
-})
+});
 
-app.get('/api/blogs/:page', function(req, res, next){
-  var page = 1;
+app.get('/api/blogs/:page', (req, res, next) => {
+  let page = 1;
   try {
     page = Number(req.params.page);
-  } catch(e){
+  } catch (e) {
     page = 1;
   }
-  Request['get']({
-    uri: 'http://blog.hyperether.com/api/blogs/'+page,
-    headers: {'secure' : 'sadfsef2424SFSFHS2424SDFSDFDS'},
-    json: true
-  }, function (error, response, body) {
-    if (error) return next(error);
-    res.json(body);
-  });
-})
+  Request.get(
+    {
+      uri: `http://blog.hyperether.com/api/blogs/${page}`,
+      headers: { secure: 'sadfsef2424SFSFHS2424SDFSDFDS' },
+      json: true,
+    },
+    (error, response, body) => {
+      if (error) return next(error);
+      res.json(body);
+    },
+  );
+});
 
-app.get('/api/blog/:id', function(req, res, next){
-  Request['get']({
-    uri: 'http://blog.hyperether.com/api/blog/'+req.params.id,
-    json: true
-  }, function (error, response, body) {
-    if (error) return next(error);
-    res.json(body);
-  });
-})
-//HyperEther routs ends
+app.get('/api/blog/:id', (req, res, next) => {
+  Request.get(
+    {
+      uri: `http://blog.hyperether.com/api/blog/${req.params.id}`,
+      json: true,
+    },
+    (error, response, body) => {
+      if (error) return next(error);
+      res.json(body);
+    },
+  );
+});
+// HyperEther routs ends
 //
 // Register API middleware
 // -----------------------------------------------------------------------------
@@ -162,7 +170,6 @@ app.use(
 // Register server-side rendering middleware
 // -----------------------------------------------------------------------------
 app.get('*', async (req, res, next) => {
-
   try {
     const css = new Set();
 
@@ -219,6 +226,7 @@ app.get('*', async (req, res, next) => {
     data.app = {
       apiUrl: config.api.clientUrl,
     };
+    console.log('config.api.clientUrl>>>>', config.api);
     const html = ReactDOM.renderToStaticMarkup(<Html {...data} />);
     res.status(route.status || 200);
     res.send(`<!doctype html>${html}`);
