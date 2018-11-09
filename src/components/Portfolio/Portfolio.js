@@ -14,9 +14,6 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import pipitit from './products/Pipitit.png';
 import osc from './products/osc.png';
 import ordero from './products/Ordero.png';
-import yappr from './products/Yappr.png';
-import gs from './products/GS.png';
-import tron from './products/Tron.png';
 import gg from './products/GG.png';
 import cc from './products/cityCam.png';
 import ti from './products/tradeit.png';
@@ -30,9 +27,8 @@ class Portfolio extends React.Component {
           <section className="container">
             <h1>Showcase of our latest projects </h1>
             <p>
-              {' '}
               We believe in simple and efficient ways to grow a business by
-              being smart.{' '}
+              being smart.
             </p>
           </section>
         </div>
@@ -111,57 +107,6 @@ class Portfolio extends React.Component {
                       <h6 className="title-pipitit">OSC</h6>
                     </a>
                   </div>
-
-                  {/* <div className="col-md-6 col-lg-4">
-                                <a href="https://play.google.com/store/apps/details?id=com.hyperether.yappr" className="project" target="_blank" rel="noopener noreferrer">
-                                    <span className="mask">
-                                        <span className="info">
-                                            <h3>Yappr</h3>
-                                            <p>
-                                                Welcome to Yappr- carefree dog walking app. Log-in with your facebook account, set your status and you are ready to go
-                                    </p>
-                                        </span>
-                                        <span className="btn-see-project">
-                                            See project
-                                </span>
-                                    </span>
-                                    <img className="logo-yappr" src={yappr} alt="" />
-                                    <h6 className="title-yappr">Yappr</h6>
-                                </a>
-                            </div>
-                            <div className="col-md-6 col-lg-4">
-                                <a href="https://play.google.com/store/apps/details?id=com.hyperether.gradsubotica" className="project" target="_blank" rel="noopener noreferrer" >
-                                    <span className="mask">
-                                        <span className="info">
-                                            <h3>City Subotica</h3>
-                                            <p>
-                                                News from website www.gradsubotica.co.rs now on application.
-                                    </p>
-                                        </span>
-                                        <span className="btn-see-project"> See project</span>
-                                    </span>
-                                    <img className="logo-gs" src={gs} alt="" />
-                                    <h6 className="title-gs">City Subotica</h6>
-                                </a>
-                            </div>
-                            <div className="col-md-6 col-lg-4">
-                                <a href="https://play.google.com/store/apps/details?id=com.hyperether.orderapp.tron" className="project" target="_blank" rel="noopener noreferrer" >
-                                    <span className="mask">
-                                        <span className="info">
-                                            <h3>Tron restaurant</h3>
-                                            <p>
-                                                Whether you like pizza, burgers, tortilla wrap, pancakes, French fries, salads or something with the
-                                                Fit Menu-over 80 delicious meals are housed at the Tron application.
-                                    </p>
-                                        </span>
-                                        <span className="btn-see-project">
-                                            See project
-                               </span>
-                                    </span>
-                                    <img className="logo-tron" src={tron} alt="" />
-                                    <h6 className="title-tron">Tron</h6>
-                                </a>
-                            </div> */}
                 </div>
               </TabPanel>
               <TabPanel>
