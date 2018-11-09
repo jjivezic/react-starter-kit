@@ -91,8 +91,7 @@ class MapContainer extends React.Component  {
     <Marker
         title={'The marker`s title will appear as a tooltip.'}
         name={'SOMA'}
-        position={{lat: 45.264032, lng: 19.830794}} />
-        
+        position={{lat: 45.264032, lng: 19.830794}} /> 
     </Map>
     );
   }

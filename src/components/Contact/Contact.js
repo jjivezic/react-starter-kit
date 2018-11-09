@@ -10,7 +10,6 @@
 import React from 'react';
 import axios from 'axios';
 import Link from '../Link';
-//import Loader from 'react-loader-spinner';
 import GoogleApiWrapper from './mapContainer';
 var Loader = require('react-loader');
 
@@ -131,12 +130,6 @@ class Contact extends React.Component {
                                 {this.state.isLoading ?
                                     <div className="loader-mini">
                                         <p>Sending ...</p>
-                                        {/* <Loader
-                                            type="Oval"
-                                            color="#6eb31e"
-                                            height="50"
-                                            width="50"
-                                        /> */}
                                         <Loader className="loader" loaded={false} options={this.state.options} />
                                     </div> : null}
 

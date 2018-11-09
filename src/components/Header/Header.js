@@ -78,42 +78,36 @@ class Header extends React.Component {
           >
             <span className="navbar-toggler-icon" />
           </button>
-
           <div
             className="collapse navbar-collapse justify-content-end"
             id="navbar-collapse"
           >
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link
-                  className="nav-link nav-link--rounded"
-                  to="/"
-                >
-                  Home{' '}
+                <Link className="nav-link nav-link--rounded" to="/">
+                  Home
                 </Link>
               </li>
               <li className="nav-item">
-                <Link
-                  className="nav-link nav-link--rounded"
-                  to="/portfolio"
-                >
-                  Portfolio{' '}
+                <Link className="nav-link nav-link--rounded" to="/portfolio">
+                  Portfolio
                 </Link>
               </li>
               <li className="nav-item">
-                      <Link className="nav-link nav-link--rounded"  to="/team">Team </Link>
-                  </li>
-              <li className="nav-item">
-                <Link
-                  className="nav-link nav-link--rounded"
-                  to="/contact"
-                >
-                  Contact us{' '}
+                <Link className="nav-link nav-link--rounded" to="/team">
+                  Team
                 </Link>
               </li>
               <li className="nav-item">
-                       <Link className="nav-link nav-link--rounded"  to="/blog">Blog </Link>
-                  </li>
+                <Link className="nav-link nav-link--rounded" to="/contact">
+                  Contact us
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link nav-link--rounded" to="/blog">
+                  Blog
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
