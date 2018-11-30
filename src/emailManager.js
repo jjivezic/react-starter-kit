@@ -26,7 +26,7 @@ module.exports.sendContactMail = function (name,from,phone, message) {
   // setup e-mail data with unicode symbols
   var mailOptions = {
     from: '"' + name + '" <' + from + '>', // sender address
-    to: "jj_ivezic@yahoo.com", // list of receivers
+    to: "office@hyperether.com", // list of receivers
     subject:"Contact from webpage" // Subject line
   };
 
