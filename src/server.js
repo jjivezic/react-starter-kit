@@ -107,7 +107,7 @@ app.get(
   },
 );
 
-// HyperEther rout
+// HyperEther route
 app.post('/email', (req, res) => {
   const body = req.body;
   emailManager
@@ -264,6 +264,7 @@ const promise = models.sync().catch(err => console.error(err.stack));
 if (!module.hot) {
   promise.then(() => {
     app.listen(config.port, () => {
+    console.log('process.env>>>>>>', process.env.SERVER_URL);
       console.info(`The server is running at http://localhost:${config.port}/`);
     });
   });
