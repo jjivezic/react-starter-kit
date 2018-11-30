@@ -93,21 +93,21 @@ class Header extends React.Component {
                   Portfolio
                 </Link>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link className="nav-link nav-link--rounded" to="/team">
                   Team
                 </Link>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <Link className="nav-link nav-link--rounded" to="/contact">
                   Contact us
                 </Link>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link className="nav-link nav-link--rounded" to="/blog">
                   Blog
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>

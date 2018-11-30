@@ -16498,19 +16498,23 @@ body {
 .testimonials {
   padding: 100px 0 70px 0;
 }
+
 .testimonials h5{
   color: #99d552;
   margin: 0;
 }
+
 .testimonials span {
   color: #505050;
 }
+
 .testimonials p {
   color: #9c9c9c;
   font-style: italic;
   border-top: 1px solid #d6d6d6;
   padding-top: 10px;
 }
+
 .footer {
   background: #3c4554;
   margin-top: 60px;
@@ -16524,6 +16528,7 @@ body {
     text-align: center;
     margin-top: 40px;
   }
+
   .testimonials {
     padding: 50px 0 50px 0;
   }

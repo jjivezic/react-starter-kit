@@ -52,7 +52,7 @@ class Lending extends React.Component {
     let swiping = false;
     let interval;
 
-    $navDots.click(function (e) {
+    $navDots.click(function(e) {
       e.preventDefault();
       if (swiping) {
         return;
@@ -238,12 +238,6 @@ class Lending extends React.Component {
               </div>
             </div>
           </div>
-
-          {/* <div className="video-modal">
-                        <div className="wrap">
-                            <iframe src="https://player.vimeo.com/video/22439234" width="620" height="350" frameBorder="0" webkitallowfullscreen mozallowfullscreen allowFullScreen></iframe>
-                        </div>
-                    </div> */}
         </div>
         <div className="features-section">
           <div className="container">
@@ -312,11 +306,19 @@ class Lending extends React.Component {
         <div className="container">
           <div className="testimonials">
             <h5>Marc Abrams</h5>
-            <span>plan9 telecom</span>
+            <span>Plan9 Telecom</span>
             <p>
-              HyperEther has been my “go to” team for business and telecom software development projects. They are organized, reliable, and insightful. The team has helped design and implement a complete over the top service with iOS, Android and Web clients for international calling, micro services for an API-based telecom product, and even a sophisticated practice management for a medium-sized medical office. They listen and understand and can work well with the end customer and are always respectful of different cultures and business practices. I am truly pleased to recommend them unconditionally.
-        </p>
-
+              HyperEther has been my “go to” team for business and telecom
+              software development projects. They are organized, reliable, and
+              insightful. The team has helped design and implement a complete
+              over the top service with iOS, Android and Web clients for
+              international calling, micro services for an API-based telecom
+              product, and even a sophisticated practice management for a
+              medium-sized medical office. They listen and understand and can
+              work well with the end customer and are always respectful of
+              different cultures and business practices. I am truly pleased to
+              recommend them unconditionally.
+            </p>
           </div>
         </div>
       </div>
