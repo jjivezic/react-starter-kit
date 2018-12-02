@@ -52,7 +52,7 @@ class Lending extends React.Component {
     let swiping = false;
     let interval;
 
-    $navDots.click(function(e) {
+    $navDots.click(function (e) {
       e.preventDefault();
       if (swiping) {
         return;
@@ -305,20 +305,30 @@ class Lending extends React.Component {
         </div>
         <div className="container">
           <div className="testimonials">
-            <h5>Marc Abrams</h5>
-            <span>Plan9 Telecom</span>
-            <p>
-              HyperEther has been my “go to” team for business and telecom
-              software development projects. They are organized, reliable, and
-              insightful. The team has helped design and implement a complete
-              over the top service with iOS, Android and Web clients for
-              international calling, micro services for an API-based telecom
-              product, and even a sophisticated practice management for a
-              medium-sized medical office. They listen and understand and can
-              work well with the end customer and are always respectful of
-              different cultures and business practices. I am truly pleased to
-              recommend them unconditionally.
+            <div className=" text-center">
+              <h2>Testimonials</h2>
+              <p class="mt-3">Take a look at what our clients have to say about us</p>
+            </div>
+            <div class="divider"></div>
+            <div className="testimonials-body">
+              <div className="testimonials-list">
+                <p>
+                  HyperEther has been my “go to” team for business and telecom
+                  software development projects. They are organized, reliable, and
+                  insightful. The team has helped design and implement a complete
+                  over the top service with iOS, Android and Web clients for
+                  international calling, micro services for an API-based telecom
+                  product, and even a sophisticated practice management for a
+                  medium-sized medical office. They listen and understand and can
+                  work well with the end customer and are always respectful of
+                  different cultures and business practices. I am truly pleased to
+                  recommend them unconditionally.
             </p>
+                <div className="text-right">              
+                  <h5>Marc Abrams</h5>
+                  <span>Plan9 Telecom</span></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
