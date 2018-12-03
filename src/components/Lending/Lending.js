@@ -11,6 +11,8 @@ import React from 'react';
 import Link from '../Link';
 import $ from 'jquery';
 import Modal from 'react-responsive-modal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronRight} from '@fortawesome/free-solid-svg-icons'
 import devices1 from './videocover1.png';
 import devices2 from './index-device.png';
 import devices3 from './devices3.png';
@@ -192,7 +194,7 @@ class Lending extends React.Component {
                     <div className="cta">
                       <Link to="contact" className="button-outline">
                         CONTACT US
-                        <i className="fa fa-chevron-right" />
+                        <FontAwesomeIcon icon={faChevronRight} />
                       </Link>
                     </div>
                   </div>
@@ -230,7 +232,7 @@ class Lending extends React.Component {
                     <div className="cta">
                       <Link to="contact" className="button-outline">
                         CONTACT US
-                        <i className="fa fa-chevron-right" />
+                        <FontAwesomeIcon icon={faChevronRight} />
                       </Link>
                     </div>
                   </div>

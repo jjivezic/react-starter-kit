@@ -18627,11 +18627,11 @@ video {
   padding-right: 45px;
 }
 
-.slider-hero .slides .slide.second .info .cta a:hover .fa {
+.slider-hero .slides .slide.second .info .cta a:hover svg {
   opacity: 1;
 }
 
-.slider-hero .slides .slide.second .info .cta a .fa {
+.slider-hero .slides .slide.second .info .cta a svg {
   opacity: 0;
   font-size: 13px;
   position: absolute;
@@ -18761,11 +18761,11 @@ video {
   padding-right: 45px;
 }
 
-.slider-hero .slides .slide.third .cta a:hover .fa {
+.slider-hero .slides .slide.third .cta a:hover svg {
   opacity: 1;
 }
 
-.slider-hero .slides .slide.third .cta a .fa {
+.slider-hero .slides .slide.third .cta a svg {
   opacity: 0;
   font-size: 13px;
   position: absolute;
